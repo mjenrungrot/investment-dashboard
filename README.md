@@ -5,4 +5,4 @@ The development of this project will be based mainly on Django + Python 3.6, and
 - [ ] Initial Baseline Setup (https://github.com/mjenrungrot/investment-dashboard/projects/1)
 - [ ] Equity Price Tracking System
 - [ ] News Fetching System
-- [ ] Backtesting System
+- [ ] Backtesting 
