@@ -32,8 +32,7 @@ def addPortfolioTransaction(request):
             return HttpResponseBadRequest("Incorrect form. (Expected PortfolioTransaction form)")
     raise Http404("Incorrect method. (Expected POST)")
 
-def index(request):
-    template = loader.get_template('portfolio/index.html')
+def getPortfolioContext():
     context = {}
 
     portfolioObjectParser = lambda portfolioObject: {
@@ -52,5 +51,10 @@ def index(request):
     currentUTCtime = datetime.datetime.now(pytz.utc)
     localTime = currentUTCtime.astimezone(dateutil.tz.tzlocal())
     context['title'] = 'Portfolio Allocation on ' + localTime.strftime("%B %d, %Y %H:%M %z")
-    
+
+    return context
+
+def index(request):
+    template = loader.get_template('portfolio/index.html')
+    context = getPortfolioContext()
     return HttpResponse(template.render(context, request))

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',                       # django-bootstrap4
     'portfolio',                        # portfolio app
+    'home',
 ]
 
 MIDDLEWARE = [
