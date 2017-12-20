@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     
@@ -21,8 +22,8 @@
     <div class="pos-f-t">
       <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-inverse p-4">
-          <h4 class="text-white">Collapsed content</h4>
-          <span class="text-muted">Toggleable via the navbar brand.</span>
+          <h4 class="text-white">Investment Dashboard</h4>
+          <span class="text-muted">Investment Dashboard</span>
         </div>
       </div>
       <nav class="navbar navbar-inverse bg-inverse">
@@ -33,23 +34,31 @@
     </div>   
     <!-- Navigation Bar Ends -->
 
-    
+    <!-- Dashboard -->
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-2">
-        {% block sidebar %}
-        <ul style="margin-top: 20px;padding: 0;list-style: none;">
-            <li><a href="{% url 'index' %}">Home</a></li>
-            <li><a href="">All books</a></li>
-            <li><a href="">All authors</a></li>
-        </ul>
-       {% endblock %}
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <div id="portfolio" class="card card-success">{% include "portfolio/index.html" %}</div>
+          <div id="equity" class="card card-success">{% include "portfolio/index.html" %}</div>
         </div>
-        <div class="col-sm-10 ">
-          {% include "portfolio/index.html" %}
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+          <div id="feed" class="card card-info">News Feed</div>
         </div>
       </div>
-  
     </div>
+    <!-- End Dashboard -->
+
+    <footer>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <!--Footer Bottom-->
+              <p class="text-xs-center">&copy; Copyright 2017 - Teerapat Jenrungrot.  All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
