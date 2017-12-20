@@ -4,9 +4,27 @@
 {% bootstrap_javascript %}
 {% bootstrap_messages %}
 
-<form action="/" method="post" class="form">
-  {% csrf_token %}
-  {% buttons %}
-    <button type="submit" class="btn btn-primary">Submit</button>
-  {% endbuttons %}
-</form>
+
+<!-- Portfolio Pie Chart JS -->
+<script>
+  window.onload = function() {
+
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+      text: "{{ title }}"
+    },
+    data: [{
+      type: "pie",
+      startAngle: 240,
+      yValueFormatString: "##0.00\"%\"",
+      indexLabel: "{label} {y}",
+      dataPoints: {{ portfolio|safe }}
+    }]
+  });
+  chart.render();
+
+  }
+</script>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

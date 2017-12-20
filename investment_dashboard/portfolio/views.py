@@ -7,6 +7,10 @@ from .models import PortfolioTransaction
 
 from django.views.decorators.csrf import csrf_exempt
 
+import pytz
+import dateutil.tz
+import datetime
+
 @csrf_exempt
 def addPortfolioTransaction(request):
     if request.method == "POST":
@@ -31,4 +35,22 @@ def addPortfolioTransaction(request):
 def index(request):
     template = loader.get_template('portfolio/index.html')
     context = {}
+
+    portfolioObjectParser = lambda portfolioObject: {
+        "label": "{:}/{:}".format(portfolioObject.equityType, portfolioObject.equityName), 
+        "equity": portfolioObject.units
+    }
+    allPortfolioTransactions = [portfolioObjectParser(object) for object in list(PortfolioTransaction.objects.all())]
+    
+    totalEquity = 0
+    for transaction in allPortfolioTransactions: totalEquity += float(transaction["equity"])
+    for idx in range(len(allPortfolioTransactions)): 
+        allPortfolioTransactions[idx]["y"] = float(allPortfolioTransactions[idx]["equity"]) / totalEquity * 100.0
+        del allPortfolioTransactions[idx]['equity']
+
+    context['portfolio'] = allPortfolioTransactions
+    currentUTCtime = datetime.datetime.now(pytz.utc)
+    localTime = currentUTCtime.astimezone(dateutil.tz.tzlocal())
+    context['title'] = 'Portfolio Allocation on ' + localTime.strftime("%B %d, %Y %H:%M %z")
+    
     return HttpResponse(template.render(context, request))
