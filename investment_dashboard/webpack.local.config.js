@@ -7,14 +7,14 @@ var ip = 'localhost'
 config.devtool = '#eval-source-map'
 
 config.entry = {
-  App1: [
+  chartComponent: [
     'webpack-dev-server/client?http://' + ip + ':3000',
     'webpack/hot/only-dev-server',
-    './reactjs/App1',
+    './reactjs/chartComponent',
   ],
 }
 
-config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles'
+config.output.publicPath = 'http://' + ip + ':3000' + '/assets/bundles/'
 
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin(),
@@ -23,7 +23,7 @@ config.plugins = config.plugins.concat([
 ])
 
 config.module.loaders.push(
-  { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot', 'babel'] }
+  { test: /\.jsx?$/, exclude: /node_modules/, loaders: ['react-hot-loader/webpack', 'babel'] }
 )
 
 module.exports = config

@@ -5,7 +5,7 @@ module.exports = {
   context: __dirname,
 
   entry: {
-    App1: './reactjs/App1',
+    chartComponent: './reactjs/chartComponent',
     vendors: ['react'],
   },
 

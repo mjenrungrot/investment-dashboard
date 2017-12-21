@@ -1,3 +1,5 @@
+{% load render_bundle from webpack_loader %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,11 +41,10 @@
       <div class="row">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
           <div id="portfolio" class="card card-success">{% include "portfolio/index.html" %}</div>
-          {% load render_bundle from webpack_loader %}
           <div id="equity" class="card card-success">
-            <div id="App1"></div>
+            <div id="equityChart"></div>
             {% render_bundle 'vendors' %}
-            {% render_bundle 'App1' %}
+            {% render_bundle 'chartComponent' %}
           </div>
         </div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
