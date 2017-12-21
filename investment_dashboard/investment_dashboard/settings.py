@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'portfolio',                        # portfolio app
     'home',                             # home app
+    'webpack_loader',                   # django-webpack-loader
 ]
 
 MIDDLEWARE = [
