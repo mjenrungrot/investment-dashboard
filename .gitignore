@@ -102,3 +102,5 @@ ENV/
 
 # react
 node_modules
+bundles
+webpack-stats-local.json
